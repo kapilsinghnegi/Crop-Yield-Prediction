@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Crop Yield Prediction</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <style>
+        body {
+            background-image: url('https://static.javatpoint.com/tutorial/machine-learning/images/crop-yield-prediction-using-machine-learning.png');
+            background-size: cover;
+<!--            background-image: url('../img/crop-yield-prediction-using-machine-learning.png');-->
+            background-repeat:no-repeat;
+        }
+    </style>
+  </head>
+  <body>
+    <h1 class="text-center text-success">Crop Yield Prediction Per Country</h1>
+<!--	Year	average_rain_fall_mm_per_year	pesticides_tonnes	avg_temp	Area	Item-->
+  <div class="container my-4 mt-4" style="background-color: rgba(0, 0, 0, 0.5); border-radius: 20px; color:white">
+
+    <h1 class="text-center" style="color: rgba(247,202,24,1)">Input All Features Here</h1>
+
+    <form action="/predict" method="post">
+    <div class="form-group">
+        <label for="Year">Year</label>
+        <input type="number" class="form-control" name="Year" step="any" value="2023">
+    </div>
+    <div class="form-group">
+        <label for="average_rainfall_mm_per_year">Average Rainfall per Year (mm)</label>
+        <input type="number" class="form-control" name="average_rainfall_mm_per_year" step="any" >
+    </div>
+    <div class="form-group">
+        <label for="pesticides_tonnes">Pesticides Tonnes</label>
+        <input type="number" class="form-control" name="pesticides_tonnes" step="any" >
+    </div>
+    <div class="form-group">
+        <label for="avg_temp">Average Temperature (Celsius)</label>
+        <input type="number" class="form-control" name="avg_temp" step="any">
+    </div>
+    <div class="form-group">
+        <label for="Area">Area</label>
+        <input type="text" class="form-control" name="Area" >
+
+    </div>
+    <div class="form-group">
+        <label for="Item">Crop Name</label>
+<!--        <input type="text" class="form-control" name="Item" >-->
+        <select class="form-control" name="Item">
+            <option value="Select Crop">-- select crop --</option>
+            <option value="Cassava">Cassava</option>
+            <option value="Maize">Maize</option>
+            <option value="Plantains and others">Plantains</option>
+            <option value="Potatoes">Potatoes</option>
+            <option value="Rice, paddy">Rice</option>
+            <option value="Sorghum">Sorghum</option>
+            <option value="Soybeans">Soyabeans</option>
+            <option value="Sweet potatoes">Sweet Potatoes</option>
+            <option value="Wheat">Wheat</option>
+            <option value="Yarns">Yarn</option>
+        </select>
+    </div>
+    <button type="submit" class="btn btn-danger btn-lg mt-2 btn-block">Predict</button>
+</form>
+
+
+      {% if prediction %}
+      <h1 class="text-center"> Predicted Yield: <br>{{prediction}} Hg/Ha</h1>
+
+      {% endif %}
+</div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+  </body>
+</html>
